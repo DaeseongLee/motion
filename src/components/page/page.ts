@@ -31,7 +31,7 @@ export class PageItemComponent extends BaseComponent<HTMLElement> implements Sec
     addChild(child: Component) {
         const container = this.element.querySelector('.page-item__body')! as HTMLElement;
         child.attachTo(container);
-
+        //ImageComponent 
     }
     setOnCloseListener(listener: OnCloseListener) {
         this.closeListener = listener;
@@ -44,9 +44,10 @@ export class PageComponent extends BaseComponent<HTMLUListElement> implements Co
     }
     addChild(section: Component) {
         const item = new this.pageItemConstructor();
-        item.addChild(section);
-        item.attachTo(this.element, 'beforeend');
-        item.setOnCloseListener(() => {
+        console.log('item', item);
+        item.addChild(section); //Composable
+        item.attachTo(this.element, 'beforeend'); //Component
+        item.setOnCloseListener(() => { //SectionContainer
             item.removeFrom(this.element);
         })
     }

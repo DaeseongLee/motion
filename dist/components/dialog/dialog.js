@@ -1,0 +1,30 @@
+import { BaseComponent } from './../component.js';
+export class InputDialog extends BaseComponent {
+    constructor() {
+        super(`<dialog class="dialog">
+                 <div class="dialog__container">
+                    <button class="close">&times;</button>
+                    <div id="dialog__Body"></div>
+                    <button class="dialog__submit">ADD</button>
+                    </div>
+                </dialog>`);
+        const closeBtn = this.element.querySelector('.close');
+        closeBtn.onclick = () => {
+            this.closeListener && this.closeListener();
+        };
+        const submitBtn = this.element.querySelector('.dialog__submit');
+        submitBtn.onclick = () => {
+            this.submitListener && this.submitListener();
+        };
+    }
+    setOncloseListener(listener) {
+        this.closeListener = listener;
+    }
+    setOnsubmitListener(listener) {
+        this.submitListener = listener;
+    }
+    addChild(child) {
+        const body = this.element.querySelector('#dialog__Body');
+        child.attachTo(body);
+    }
+}

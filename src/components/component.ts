@@ -5,6 +5,7 @@ export interface Component {
 
 //Encapsulate the HTML element creattion
 
+//element를 받아와서 템플릿에 추가한다음. 부모요소에 추가한다.
 export class BaseComponent<T extends HTMLElement> implements Component {
     protected readonly element: T;
 

@@ -1,5 +1,5 @@
 import { BaseComponent } from './../component.js';
-class PageItemComponent extends BaseComponent {
+export class PageItemComponent extends BaseComponent {
     constructor() {
         super(`<li class="page-item">
                     <section class="page-item__body"></section>
@@ -22,11 +22,13 @@ class PageItemComponent extends BaseComponent {
     }
 }
 export class PageComponent extends BaseComponent {
-    constructor() {
+    constructor(pageItemConstructor) {
         super('<ul class="page"></ul>');
+        this.pageItemConstructor = pageItemConstructor;
     }
     addChild(section) {
-        const item = new PageItemComponent();
+        const item = new this.pageItemConstructor();
+        console.log('item', item);
         item.addChild(section);
         item.attachTo(this.element, 'beforeend');
         item.setOnCloseListener(() => {
