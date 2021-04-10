@@ -243,3 +243,7 @@ body {
   padding: 1em;
   color: var(--smokywhite);
 }
+
+.mute-children * {
+  pointer-events: none;
+}
