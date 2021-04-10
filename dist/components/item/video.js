@@ -5,7 +5,7 @@ export class VideoComponent extends BaseComponent {
                     <div class="video__player">
                         <iframe class="video__iframe"></iframe>
                     </div>
-                    <h3 class="video__title"></h3>
+                    <h3 class="page-item__title video__title"></h3>
                 </section>`);
         console.log(url);
         const iframe = this.element.querySelector('.video__iframe');
